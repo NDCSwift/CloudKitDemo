@@ -81,5 +81,5 @@ You must set these up in your own Apple Developer account to run CloudKit sync s
 ⸻
 
 📺 YouTube
-[Click here to check out the guide on YouTube](https://www.youtube.com/@NoahDoesCoding97)
+[Click here to check out the guide on YouTube](https://youtu.be/rtlVb6aazFg)
 
