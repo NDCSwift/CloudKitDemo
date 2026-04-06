@@ -5,6 +5,26 @@ This example includes a simple `Entry` model, a basic UI for creating and displa
 
 ---
 
+## 🤔 What this is
+
+This project shows how to wire SwiftData to CloudKit so your app's data automatically syncs across all of a user's devices. It uses a minimal `Entry` model to demonstrate the required setup steps — container configuration, iCloud capability, and the compatibility rules CloudKit enforces. It also documents the three most common setup errors and how to fix them.
+
+## ✅ Why you'd use it
+
+- **SwiftData + CloudKit together** — shows the exact `.modelContainer` configuration for cloud sync
+- **Error reference guide** — covers Invalid Bundle, Bad Container, and schema mismatch (Error 134060) with fixes
+- **Photo asset support** — includes `photoAssets: [Data]?` pattern for syncing image data
+- **CloudKit Dashboard guidance** — explains how to inspect your `CD_Entry` record type in the developer portal
+- **Cross-platform** — same model runs on iPhone, iPad, and Mac with zero extra code
+
+## 📺 Watch on YouTube
+
+[![Watch on YouTube](https://img.shields.io/badge/YouTube-Watch%20the%20Tutorial-red?style=for-the-badge&logo=youtube)](https://youtu.be/rtlVb6aazFg)
+
+> This project was built for the [NoahDoesCoding YouTube channel](https://www.youtube.com/@NoahDoesCoding97).
+
+---
+
 ## ✨ Features
 - `@Model`-based SwiftData setup
 - CloudKit-backed persistence with `.modelContainer(for:)`
@@ -34,7 +54,7 @@ This example includes a simple `Entry` model, a basic UI for creating and displa
 5. Confirm the container exists in the [Apple Developer Portal](https://developer.apple.com/account/resources/identifiers/list).
 
 ⚠️ **Common Errors:**
-- *Invalid Bundle ID for container* → container and bundle don’t match.  
+- *Invalid Bundle ID for container* → container and bundle don't match.  
 - *Bad Container* → added in Xcode but not in Developer Portal.  
 - *Error 134060 (Schema mismatch)* → remove app, clean build, rerun.  
 
@@ -54,32 +74,31 @@ final class Entry {
 ### 4. Usage
 
 The HomeView provides:
-	•	TextFields for creating new entries.
-	•	A list of all saved entries (auto-synced across devices).
-	•	Real-time sync powered by SwiftData + CloudKit.
+- TextFields for creating new entries.
+- A list of all saved entries (auto-synced across devices).
+- Real-time sync powered by SwiftData + CloudKit.
 
 Run the app on two physical devices signed into the same iCloud account to see instant syncing.
 
 Rules for CloudKit compatibility:
-	•	✅ All non-optional properties must have defaults.
-	•	❌ Do not use @Attribute(.unique) (causes sync crashes).
+- ✅ All non-optional properties must have defaults.
+- ❌ Do not use `@Attribute(.unique)` (causes sync crashes).
 
-  Use the CloudKit Dashboard to inspect:
-	•	Your container
-	•	Development Database
-	•	Auto-generated CD_Entry record type
+Use the CloudKit Dashboard to inspect:
+- Your container
+- Development Database
+- Auto-generated CD_Entry record type
 
-⸻
+---
 
-⚠️ Notes
-	•	This repo does not include entitlements or a configured iCloud container.
-You must set these up in your own Apple Developer account to run CloudKit sync successfully.
-	•	Schema changes:
-	•	✅ Safe: Add new optional/defaulted fields
-	•	❌ Unsafe: Remove or change types (requires migration)
+## ⚠️ Notes
+- This repo does not include entitlements or a configured iCloud container. You must set these up in your own Apple Developer account to run CloudKit sync successfully.
+- Schema changes:
+  - ✅ Safe: Add new optional/defaulted fields
+  - ❌ Unsafe: Remove or change types (requires migration)
 
-⸻
+## 📦 Requirements
+- Xcode 16+
+- iOS 18+ / macOS 15+
 
-📺 YouTube
-[Click here to check out the guide on YouTube](https://youtu.be/rtlVb6aazFg)
-
+📺 [Watch the guide on YouTube](https://youtu.be/rtlVb6aazFg)
